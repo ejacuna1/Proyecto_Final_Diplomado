@@ -1,0 +1,50 @@
+---
+title: "Proyecto Final Diplomado"
+author: "Edouard Acuña Kohnenkamp"
+format: 
+   html:
+     toc: true
+     code-fold: show
+---
+
+```{r}
+#/ label: setup
+#/ include: false
+
+knitr::opts_chunk$set(
+  echo = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  fig.width = 7,
+  fig.height = 5,
+  fig.align = "center"
+)
+```
+
+
+## Carga de librerías
+
+Librerias necesarias para proyecto final
+
+```{r, warning=FALSE}
+library(tidyverse)
+library(readxl)
+```
+
+## Carga de base de datos
+
+Base de datos en formato excel
+
+```{r}
+DATA_RESUMEN <- read_excel("bases/DATA_RESUMEN.xlsx")
+View(DATA_RESUMEN)
+```
+
+## Procesamiento de datos
+
+```{r}
+DATA_RESUMEN <- DATA_RESUMEN %>% 
+                mutate(SUELO = as.factor(SUELO),
+                       TRATAMIENTO = as.factor(TRATAMIENTO),
+                       REPETICION = as.factor(REPETICION))
+```
